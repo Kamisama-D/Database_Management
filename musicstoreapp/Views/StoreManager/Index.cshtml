@@ -1,0 +1,80 @@
+﻿@model IEnumerable<musicstoreapp.Models.Album>
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length <= length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (@Html.BeginForm("Search", "StoreManager"))
+{
+<p>
+    @Html.Label("Titile:")@Html.TextBox("searchString","", new { hight=10})
+    <input type="submit" value="Search" />
+</p>
+}
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.Label("Genre Name")
+            </th>
+            <th>
+                @Html.Label("Artist Name") @*@Html.DisplayNameFor(model => model.Artist.Name)*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.Label("Inventory Amount")
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genre.Name)
+        </td>
+        <td>
+            @Truncate(item.Artist.Name, 25)
+        </td>
+        <td>
+            @Truncate(item.Title, 25)
+
+        </td>
+        <td>
+
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+
+            @Html.DisplayFor(modelItem => item.InventoryAmount)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.AlbumId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.AlbumId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.AlbumId })
+        </td>
+    </tr>
+        }
+
+    </table>

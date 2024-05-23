@@ -1,0 +1,104 @@
+﻿@model musicstoreapp.ViewModels.AnalysisViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<fieldset>
+    <legend>TopProduct</legend>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.Label("Album Id")
+            </th>
+            <th>
+                @Html.Label("Top Product")
+            </th>
+            <th>
+                @Html.Label("Total Sales")
+            </th>
+        </tr>
+        @foreach (var item in Model.TopProduct)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlbumId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalSales)
+        </td>
+    </tr>
+        }
+    </table>
+
+</fieldset>
+
+<fieldset>
+    <legend>SalesAndProfits</legend>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.Label("Album Id")
+            </th>
+            <th>
+                @Html.Label("Title")
+            </th>
+            <th>
+                @Html.Label("Total Sales")
+            </th>
+            <th>
+                @Html.Label("Total Profits")
+            </th>
+        </tr>
+        @foreach (var item in Model.SalesAndProfits)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlbumId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalSales)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalProfits)
+        </td>
+    </tr>
+        }
+    </table>
+
+</fieldset>
+<fieldset>
+    <legend>RegionSales</legend>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.Label("Region")
+            </th>
+            <th>
+                @Html.Label("Region Sales")
+            </th>
+        </tr>
+        @foreach (var item in Model.RegionSales)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Region)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RegionS)
+                </td>
+            </tr>
+        }
+    </table>
+
+</fieldset>
