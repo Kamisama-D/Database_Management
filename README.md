@@ -1,1 +1,1 @@
-# INFSCI2710 Database_Management
+# INFSCI2710_Database_Management
